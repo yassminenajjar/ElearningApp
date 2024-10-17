@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class MatiereDto {
 
     private String libelle;
-    private Boolean deleted;
+
     private Long id;
 
 
@@ -22,7 +22,7 @@ public class MatiereDto {
 
         return Matiere.builder()
                 .libelle(matiere.getLibelle())
-                .deleted(matiere.getDeleted())
+
                 .id(matiere.getId())
 
 
@@ -47,7 +47,7 @@ public class MatiereDto {
 
         return MatiereDto.builder()
                 .libelle(matiere.getLibelle())
-                .deleted(matiere.getDeleted())
+
                 .id(matiere.getId())
 
 

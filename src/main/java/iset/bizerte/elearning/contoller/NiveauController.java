@@ -1,6 +1,7 @@
 package iset.bizerte.elearning.contoller;
 
 
+import iset.bizerte.elearning.Dto.MatiereDto;
 import iset.bizerte.elearning.Dto.NiveauDto;
 import iset.bizerte.elearning.Service.NiveauService;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,18 @@ public class NiveauController {
 
     private final NiveauService niveauService;
 
-@GetMapping("/listall")
+
+    @GetMapping("/listmatierebyniveau/{id}")
+    public List<MatiereDto> listmatierebyniveau(@PathVariable("id") Long id) {
+        return niveauService.listmatierebyniveau(id);
+    }
+
+    @PutMapping("/removematierefromniveau/{idniveau}/{idmatiere}")
+    public void removematierefromniveau(@PathVariable("idniveau")    Long idniveau, @PathVariable("idmatiere") Long idmatiere) {
+        niveauService.removematierefromniveau(idniveau, idmatiere);
+    }
+
+    @GetMapping("/listall")
     public List<NiveauDto> findAll() {
         return niveauService.findAll();
     }

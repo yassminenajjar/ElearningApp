@@ -19,7 +19,7 @@ import java.util.Set;
 @SuperBuilder
 public class Matiere extends AbstractEntity{
     private String libelle;
-    private Boolean deleted;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "matieres", cascade = CascadeType.ALL)
     private Set<Cours> cours = new HashSet<>();
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "matieres", cascade = CascadeType.ALL)

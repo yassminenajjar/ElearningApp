@@ -2,10 +2,7 @@ package iset.bizerte.elearning.Entity;
 
 
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -27,11 +24,13 @@ import java.util.Set;
 @SuperBuilder
 public class Niveau extends AbstractEntity {
     private String niveaustudent;
-    private Boolean deleted;
+
     private String orientation;
     //mappedBy = "niveau",
     @ManyToMany(fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
     private List<Matiere> matieres = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "niveau", cascade = CascadeType.ALL)
+    private List<Cours> cours = new ArrayList<>();
 }
 
 

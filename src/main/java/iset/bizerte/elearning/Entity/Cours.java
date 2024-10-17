@@ -10,7 +10,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,20 +23,24 @@ import java.util.Set;
 @SuperBuilder
 public class Cours extends AbstractEntity {
     private String titre;
-    private Boolean estouverte;
-    private Boolean deleted;
+    private String description;
+    private boolean estouverte;
+    private String urlcours;
+
     private String urlimage;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "cours", cascade = CascadeType.ALL)
-    private Set<Tag_> tags = new HashSet<>();
+    private List<Tag_> tags = new ArrayList<>();
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "matere_id")
     private Matiere matieres;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "cours", cascade = CascadeType.ALL)
-    private Set<Section> sections = new HashSet<>();
+    private List<Section> sections = new ArrayList<>();
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "teacher_id")
     private Enseignant teacher;
-
+@ManyToOne(fetch = FetchType.LAZY)
+@JoinColumn(name = "Niveau-id")
+private Niveau niveau;
 
 
 

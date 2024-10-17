@@ -15,5 +15,6 @@ public interface CoursService {
     void deleteById(Long id);
     List<CoursDto > findbyobjet(String kye);
     List<CoursDto> findDate(Date start, Date end);
+    CoursDto uppdate(CoursDto request);
 
 }

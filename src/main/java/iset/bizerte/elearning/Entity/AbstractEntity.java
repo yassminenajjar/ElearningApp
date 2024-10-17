@@ -7,6 +7,7 @@ import java.time.Instant;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedDate;
@@ -32,6 +33,8 @@ public class AbstractEntity implements Serializable {
     @LastModifiedDate
     @Column(name = "lastModifiedDate")
     private Instant lastModifiedDate;
+    @Builder.Default
+    private boolean deleted = false;
 
 
 

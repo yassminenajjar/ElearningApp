@@ -1,6 +1,7 @@
 package iset.bizerte.elearning.Service;
 
 
+import iset.bizerte.elearning.Dto.MatiereDto;
 import iset.bizerte.elearning.Dto.NiveauDto;
 
 import java.util.Date;
@@ -16,6 +17,9 @@ public interface NiveauService {
    List<NiveauDto > findbyobjet(String kye);
     List<NiveauDto > findDate(Date start, Date end);
     NiveauDto uppdate(NiveauDto request);
+    void removematierefromniveau (Long idniveau , Long idmatiere);
+
+    List<MatiereDto> listmatierebyniveau (Long id);
 
 
 

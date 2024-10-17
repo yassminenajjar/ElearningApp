@@ -17,7 +17,7 @@ import java.util.List;
 public class NiveauDto {
     public Long id;
     private String niveaustudent;
-    private Boolean deleted;
+
     private String orientation;
     List<Long> id_matieres;
 
@@ -28,7 +28,7 @@ public class NiveauDto {
 
         return Niveau.builder()
                 .niveaustudent(niveau.getNiveaustudent())
-                .deleted(niveau.getDeleted())
+
                 .orientation(niveau.getOrientation())
                 .id(niveau.getId())
 
@@ -43,7 +43,7 @@ public class NiveauDto {
 
         return NiveauDto.builder()
                 .niveaustudent(niveau.getNiveaustudent())
-                .deleted(niveau.getDeleted())
+
                 .orientation(niveau.getOrientation())
                 .id(niveau.getId())
 

@@ -1,5 +1,6 @@
 package iset.bizerte.elearning.Service.IMPL;
 
+import iset.bizerte.elearning.Dto.MatiereDto;
 import iset.bizerte.elearning.Dto.NiveauDto;
 import iset.bizerte.elearning.Entity.Matiere;
 import iset.bizerte.elearning.Entity.Niveau;
@@ -125,7 +126,7 @@ public class NiveauServiceImpl implements NiveauService {
             Niveau niveauconverted = NiveauDto.toEntity(request);
 
             niveau.get().setNiveaustudent(niveauconverted.getNiveaustudent());
-            niveau.get().setDeleted(niveauconverted.getDeleted());
+
             niveau.get().setOrientation(niveauconverted.getOrientation());
             List<Matiere> matierestoadd=this.getMatieresByNiveau(request.getId());
             if (request.getId_matieres().isEmpty()) {
@@ -151,4 +152,29 @@ public class NiveauServiceImpl implements NiveauService {
             throw new RuntimeException("Niveau not found");
         }
     }
+
+    @Override
+    public void removematierefromniveau(Long idniveau , Long idmatiere) {
+        List<Matiere> matierestoremove=this.getMatieresByNiveau(idniveau);
+        Optional<Matiere> matiere = matiereRepository.findById(idmatiere);
+        Optional<Niveau> niveau = niveauRepository.findById(idniveau);
+        if(matiere.isPresent() && niveau.isPresent()){
+            Matiere mat = matiere.get();
+            matierestoremove.removeIf(m -> m.equals(mat));
+            niveau.get().setMatieres(matierestoremove);
+            niveauRepository.save(niveau.get());
+
+
+
+        }
+    }
+
+    @Override
+    public List<MatiereDto> listmatierebyniveau(Long id) {
+        return this.getMatieresByNiveau(id).stream()
+                .map(MatiereDto::FromEntity)
+                .collect(Collectors.toList());
+    }
+
+
 }
