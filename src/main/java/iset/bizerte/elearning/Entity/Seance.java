@@ -19,7 +19,7 @@ import java.util.Set;
 public class Seance extends AbstractEntity{
     private String titre;
     private String urlvideo;
-    private Boolean deleted;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "section_id")
     private Section section;

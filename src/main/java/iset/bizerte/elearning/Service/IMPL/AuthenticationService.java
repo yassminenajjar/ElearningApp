@@ -86,9 +86,10 @@ public class AuthenticationService {
             Enseignant user = new Enseignant();
             user = EnseignantDto.toEntity((EnseignantDto) userRequest);
             user.setPassword(passwordEncoder.encode(userRequest.getPassword()));
+            user.setEnabled(true);
             user.setRole(Erole.ENSEIGANT);
             var savedUser = repository.save(user);
-            publisher.publishEvent(new RegistrationCompleteEvent(savedUser, applicationUrl(request)));
+            //publisher.publishEvent(new RegistrationCompleteEvent(savedUser, applicationUrl(request)));
             return new ResponseEntity<>(
                     Response.builder()
                             .responseMessage("Success! Please, check your email to complete your registration")

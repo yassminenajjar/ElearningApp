@@ -66,7 +66,7 @@ private final CoursRepository coursRepository;
                 }
 
             }
-            List<Section> sectiontoadd;
+           /* List<Section> sectiontoadd;
             if (request.getSectionid().isEmpty()) {
                 throw new IllegalArgumentException("you need to add a section ");
             } else {
@@ -75,10 +75,10 @@ private final CoursRepository coursRepository;
                     Optional<Section> sectionfound = sectionRepository.findById(Idsection);
                     sectionfound.ifPresent(sectiontoadd::add);
                 }
-            }
+            }*/
             System.err.println(tagtoadd);
             cours.setTags(tagtoadd);
-            cours.setSections(sectiontoadd);
+            //cours.setSections(sectiontoadd);
             Cours coursSaved = coursRepository.save(cours);
             return CoursDto.FromEntity(coursSaved);
 

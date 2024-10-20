@@ -17,33 +17,28 @@ public class SectionDto {
     private String titre;
     private Long ordre;
     private String discription;
+    private Long idcours;
 
 
-    public static Section toSection(SectionDto sectionDto) {
+    public static Section toEntity(SectionDto sectionDto) {
 
         return Section.builder()
                 .titre(sectionDto.getTitre())
                 .ordre(sectionDto.getOrdre())
                 .discription(sectionDto.getDiscription())
 
-
-
-
                 .build();
-
-
-
-
 
     }
 
 
-    public static SectionDto toSection(Section sectionDto) {
+    public static SectionDto FromEntity(Section sectionDto) {
 
         return SectionDto.builder()
                 .titre(sectionDto.getTitre())
                 .ordre(sectionDto.getOrdre())
                 .discription(sectionDto.getDiscription())
+                .idcours(sectionDto.getCours().getId())
 
 
 

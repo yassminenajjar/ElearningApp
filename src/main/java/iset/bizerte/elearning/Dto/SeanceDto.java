@@ -19,7 +19,8 @@ public class SeanceDto {
 
     private String titre;
     private String urlvideo;
-    private Boolean deleted;
+    private Long idsection;
+
 
     public static Seance toEntity(SeanceDto seance) {
 
@@ -27,9 +28,6 @@ public class SeanceDto {
         return Seance.builder()
                 .titre(seance.titre)
                 .urlvideo(seance.urlvideo)
-                .deleted(seance.deleted)
-
-
                 .build();
 
 
@@ -45,13 +43,8 @@ public class SeanceDto {
         return SeanceDto.builder()
                 .titre(seance.getTitre())
                 .urlvideo(seance.getUrlvideo())
-                .deleted(seance.getDeleted())
-
-
+                //.idsection(seance.getSection().getId())
                 .build();
-
-
-
 
 
     }

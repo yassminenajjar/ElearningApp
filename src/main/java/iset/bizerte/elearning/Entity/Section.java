@@ -26,7 +26,7 @@ public class Section extends AbstractEntity{
     private Long ordre;
     private String discription;
 
-    private Boolean deleted;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cours_id")
     private Cours cours;
