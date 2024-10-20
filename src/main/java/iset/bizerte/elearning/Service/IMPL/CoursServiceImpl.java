@@ -25,6 +25,7 @@ private final CoursRepository coursRepository;
     private final EnseignantRepository enseignantRepository;
     private final TagRepository tagRepository;
     private final SectionRepository sectionRepository;
+    private final EtudiantRepository etudiantRepository;
     @Override
     public List<CoursDto> findAll() {
         return coursRepository.findAll().stream()
@@ -132,4 +133,42 @@ private final CoursRepository coursRepository;
             throw new RuntimeException("Cours not found");
         }
     }
+
+    @Override
+    public Void addcoursestostudent(List<Long> idcourses , Long ideleve) {
+
+        Optional<Etudiant> etudiants = etudiantRepository.findById(ideleve);
+        if (etudiants.isPresent()) {
+
+            List<Cours> coursestoadd;
+
+            if (idcourses.isEmpty()) {
+                throw new IllegalArgumentException("you need to add courses");
+            } else {
+                coursestoadd = new ArrayList<>();
+                for (Long Idcour : idcourses) {
+                    Optional<Cours> coursfound = coursRepository.findById(Idcour);
+                    coursfound.ifPresent(coursestoadd::add);
+                }
+
+
+            }
+        }
+
+        throw new RuntimeException("accepted");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+

@@ -18,10 +18,11 @@ import lombok.experimental.SuperBuilder;
 
 public class Support extends AbstractEntity{
 
-    private Boolean deleted;
+
     private Long ordre;
     private String name;
     private String paragraph;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "seance_id")

@@ -13,7 +13,7 @@ import lombok.experimental.SuperBuilder;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 @Entity
 @Getter
@@ -26,6 +26,7 @@ public class Cours extends AbstractEntity {
     private String description;
     private boolean estouverte;
     private String urlcours;
+    private Double prix;
 
     private String urlimage;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "cours", cascade = CascadeType.ALL)
@@ -38,9 +39,12 @@ public class Cours extends AbstractEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "teacher_id")
     private Enseignant teacher;
-@ManyToOne(fetch = FetchType.LAZY)
-@JoinColumn(name = "Niveau-id")
-private Niveau niveau;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "Niveau-id")
+    private Niveau niveau;
+    @ManyToMany(fetch = FetchType.LAZY , mappedBy = "cours")
+    private List<Etudiant> etudiants = new ArrayList<>();
+
 
 
 

@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 @Getter
@@ -23,4 +26,11 @@ public class Etudiant extends User {
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Parent parent ;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+
+    private List<Cours> cours = new ArrayList<>();
+
+
+
 }
