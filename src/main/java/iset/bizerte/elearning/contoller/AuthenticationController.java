@@ -26,7 +26,7 @@ public class AuthenticationController {
     private final AuthenticationService service;
     private final UserService userService;
 
-    @PostMapping("/register")
+    @PostMapping("/registeretudiant")
     public ResponseEntity<Response> register(
             @RequestBody @Valid EtudiantDto userRequest,
             HttpServletRequest request

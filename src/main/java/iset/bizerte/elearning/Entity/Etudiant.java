@@ -31,6 +31,9 @@ public class Etudiant extends User {
 
     private List<Cours> cours = new ArrayList<>();
 
+    @OneToMany(fetch = FetchType.LAZY , mappedBy = "etudiant")
+    private List<Panier> paniers = new ArrayList<>();
+
 
 
 }

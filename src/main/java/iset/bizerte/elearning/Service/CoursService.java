@@ -16,5 +16,5 @@ public interface CoursService {
     List<CoursDto > findbyobjet(String kye);
     List<CoursDto> findDate(Date start, Date end);
     CoursDto uppdate(CoursDto request);
-    Void addcoursestostudent(List<Long> idcourses , Long ideleve);
+    Void addcoursestostudent( Long id);
 }

@@ -43,7 +43,7 @@ public class SupportDto {
 
 
         return SupportDto.builder()
-                .deleted(support.getDeleted())
+
                 .ordre(support.getOrdre())
                 .name(support.getName())
                 .paragraph(support.getParagraph())

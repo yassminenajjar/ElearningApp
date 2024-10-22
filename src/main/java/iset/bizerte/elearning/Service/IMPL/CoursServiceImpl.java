@@ -2,6 +2,7 @@ package iset.bizerte.elearning.Service.IMPL;
 
 import iset.bizerte.elearning.Dto.CoursDto;
 import iset.bizerte.elearning.Dto.NiveauDto;
+import iset.bizerte.elearning.Dto.PanierDto;
 import iset.bizerte.elearning.Entity.*;
 import iset.bizerte.elearning.Repository.*;
 import iset.bizerte.elearning.Service.CoursService;
@@ -26,6 +27,7 @@ private final CoursRepository coursRepository;
     private final TagRepository tagRepository;
     private final SectionRepository sectionRepository;
     private final EtudiantRepository etudiantRepository;
+    private final PanierRepository panierRepository;
     @Override
     public List<CoursDto> findAll() {
         return coursRepository.findAll().stream()
@@ -135,27 +137,29 @@ private final CoursRepository coursRepository;
     }
 
     @Override
-    public Void addcoursestostudent(List<Long> idcourses , Long ideleve) {
+    public Void addcoursestostudent(Long idpanier ) {
+        Optional<Panier> panier = panierRepository.findById(idpanier);
+        if (panier.isPresent()) {
+            System.err.println(panier.get());
+            Optional<Etudiant> etudiants = etudiantRepository.findById(panier.get().getEtudiant().getId());
 
-        Optional<Etudiant> etudiants = etudiantRepository.findById(ideleve);
-        if (etudiants.isPresent()) {
+            if (!panier.get().getCours().isEmpty() && etudiants.isPresent()) {
 
-            List<Cours> coursestoadd;
+                    etudiants.get().setCours(panier.get().getCours());
+                    etudiantRepository.save(etudiants.get());
+            }
 
-            if (idcourses.isEmpty()) {
-                throw new IllegalArgumentException("you need to add courses");
-            } else {
-                coursestoadd = new ArrayList<>();
-                for (Long Idcour : idcourses) {
-                    Optional<Cours> coursfound = coursRepository.findById(Idcour);
-                    coursfound.ifPresent(coursestoadd::add);
-                }
 
+            else {throw new RuntimeException("accepted!");
 
             }
-        }
 
-        throw new RuntimeException("accepted");
+
+        }
+        throw new RuntimeException("accepted!");
+
+
+
     }
 
 

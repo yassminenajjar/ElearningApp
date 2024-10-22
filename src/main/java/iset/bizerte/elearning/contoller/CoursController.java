@@ -15,6 +15,12 @@ public class CoursController {
 
     private final CoursService coursService;
 
+
+@GetMapping("/addcoursestostudent/{id}")
+    public Void addcoursestostudent(@PathVariable("id")  Long id) {
+        return coursService.addcoursestostudent(id);
+    }
+
     @GetMapping("/listall")
     public List<CoursDto> findAll() {
         return coursService.findAll();

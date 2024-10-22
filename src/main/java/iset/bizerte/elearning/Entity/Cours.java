@@ -44,7 +44,8 @@ public class Cours extends AbstractEntity {
     private Niveau niveau;
     @ManyToMany(fetch = FetchType.LAZY , mappedBy = "cours")
     private List<Etudiant> etudiants = new ArrayList<>();
-
+@ManyToMany(fetch = FetchType.LAZY , mappedBy = "cours")
+    private List<Panier> paniers = new ArrayList<>();
 
 
 

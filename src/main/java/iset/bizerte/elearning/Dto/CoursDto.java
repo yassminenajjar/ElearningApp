@@ -28,6 +28,7 @@ private Long idmatiere;
 private Long idenseignant;
 private List <Long> tagid;
     private List <Long> sectionid;
+    private Double prix;
 
 
     public static Cours ToEntity(CoursDto cours) {
@@ -38,6 +39,7 @@ private List <Long> tagid;
                 .urlimage(cours.getUrlimage())
                 .description(cours.getDescription())
                 .urlcours(cours.getUrlcours())
+                .prix(cours.getPrix())
 
                 .build();
 
@@ -59,6 +61,7 @@ private List <Long> tagid;
                 .urlimage(cours.getUrlimage())
                 .description(cours.getDescription())
                 .urlcours(cours.getUrlcours())
+                .prix(cours.getPrix())
 
                 .build();
 
